@@ -2,7 +2,7 @@ import os
 from pydub import AudioSegment
 from collections import defaultdict
 
-input_folder = 'segments/wavs'
+input_folder = 'opencpop-psswd-Mmwjxhn2017\wavs'
 output_folder = 'opencpop'
 
 os.makedirs(output_folder, exist_ok=True)
