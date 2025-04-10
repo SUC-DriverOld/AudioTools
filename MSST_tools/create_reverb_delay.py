@@ -16,11 +16,11 @@ def random_effect(audio, sr):
             mix=1.0
         ),
         Reverb(
-            room_size=uniform(0.1, 0.8),
-            damping=uniform(0.1, 0.8),
+            room_size=uniform(0.6, 1.0),
+            damping=uniform(0.6, 1.0),
             wet_level=1.0, 
             dry_level=0.0, 
-            width=uniform(0.6, 1.0)
+            width=uniform(0.5, 1.0)
         ),
         HighpassFilter(cutoff_frequency_hz=uniform(100, 1000)),
         LowpassFilter(cutoff_frequency_hz=uniform(4000, 12000))
@@ -28,8 +28,8 @@ def random_effect(audio, sr):
 
     delay = Pedalboard([
         Delay(
-            delay_seconds=uniform(0.05, 0.500),
-            feedback=uniform(0.1, 0.5),
+            delay_seconds=uniform(0.05, 0.300),
+            feedback=uniform(0.1, 0.4),
             mix=1.0
         ),
         Reverb(
@@ -43,7 +43,7 @@ def random_effect(audio, sr):
         LowpassFilter(cutoff_frequency_hz=uniform(3000, 10000))
     ])
 
-    effect = uniform(0.1, 0.4) * reverb(audio, sr) + uniform(0.1, 0.4) * delay(audio, sr)
+    effect = uniform(0.2, 0.5) * reverb(audio, sr) + uniform(0.1, 0.3) * delay(audio, sr)
     mix = effect + audio
 
     return mix, effect
